@@ -1,10 +1,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var isLoggedIn = false
+
     var body: some View {
-        VStack {
-            Text("Hello, AI!")
-                .padding()
+        if isLoggedIn {
+            MainView()
+        } else {
+            LoginView(isLoggedIn: $isLoggedIn)
         }
     }
 }
@@ -14,3 +17,4 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+

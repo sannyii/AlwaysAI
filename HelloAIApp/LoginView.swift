@@ -6,29 +6,44 @@ struct LoginView: View {
     @State private var password: String = ""
 
     var body: some View {
-        VStack(spacing: 20) {
-            Text("Welcome to AlwaysAI")
-                .font(.largeTitle)
-                .padding(.top, 40)
+        ZStack {
+            LinearGradient(
+                colors: [.purple, .blue],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+            .ignoresSafeArea()
 
-            TextField("Username", text: $username)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding(.horizontal, 40)
+            VStack(spacing: 20) {
+                Text("Welcome to AlwaysAI")
+                    .font(.largeTitle)
+                    .padding(.top, 40)
 
-            SecureField("Password", text: $password)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding(.horizontal, 40)
-
-            Button(action: { isLoggedIn = true }) {
-                Text("Log In")
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(8)
+                TextField("Username", text: $username)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding(.horizontal, 40)
+
+                SecureField("Password", text: $password)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding(.horizontal, 40)
+
+                Button(action: { isLoggedIn = true }) {
+                    Text("Log In")
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .cornerRadius(8)
+                        .padding(.horizontal, 40)
+                }
+                Spacer()
             }
-            Spacer()
+            .padding()
+            .background(
+                .ultraThinMaterial,
+                in: RoundedRectangle(cornerRadius: 20, style: .continuous)
+            )
+            .padding(.horizontal, 20)
         }
     }
 }
